@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Info | CodeForces</title>
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width"/>
+<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+</head>
+<body>
+  <!-- Javascript -->
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function (){
+      $("#btn382").click(function(){
+      var str="";
+      var x=  document.getElementById("input");
+      var curl="https://codeforces.com/api/user.rating?handle="+x.value;
+
+      jQuery.support.cors = true;
+      $.ajax({
+         url: curl,
+         dataType: 'json',
+         success: function( end ) {
+           var mid = end.result;
+           var link="https://codeforces.com/contest/";
+           for(var i=0;i<mid.length;i++){
+                 str+="<a href="+link+mid[i].contestId+">"+(mid[i].contestId+"</a>"+"\n");
+           }
+           document.getElementById("main").innerHTML="比赛清单"+str;
+           document.getElementById("num").innerHTML="至今你以参加"+mid.length+"场比赛";
+         },
+         error: function( end ) {
+           alert( "ERROR:  " + "输入用户名错误，请重新输入" );
+         }
+       });
+        });
+    });
+  </script>
+
+
+
+  <!-- HTML -->
+  <a name="#ajax-getjson-example"></a>
+  <div id="example-section38">
+      <div id="div381"></div>
+      <input id="input"  type="text" placeholder="请输入Codeforces ID" />
+      <button id="btn382" type="button">Try to click me</button><br>
+      <div id="num">:)</div>
+      <div id="main"> </div>
+  </div>
+</body>
+</html>
