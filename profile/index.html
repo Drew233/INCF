@@ -20,7 +20,7 @@
       var str="";
       var x=  document.getElementById("input");
       var curl="https://codeforces.com/api/user.rating?handle="+x.value;
-
+      var buttonstyle="";
       jQuery.support.cors = true;
       $.ajax({
          url: curl,
@@ -29,7 +29,7 @@
            var mid = end.result;
            var link="https://codeforces.com/contest/";
            for(var i=0;i<mid.length;i++){
-                 str+="<a href="+link+mid[i].contestId+">"+(mid[i].contestId+"</a>"+"\n");
+                 str+="<a href="+link+mid[i].contestId+" class="+buttonstyle+">"+(mid[i].contestId+"</a>"+"\n");
            }
            document.getElementById("div381").innerHTML="";
            document.getElementById("main").innerHTML="比赛清单"+str;
