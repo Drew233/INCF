@@ -2,7 +2,7 @@
 #kuang {
     position: relative;
     width: 50%;
-    height: 30%;
+    height: auto;
     max-height: 1200px;
     margin-bottom: 15px;
     margin-top: 15px;
