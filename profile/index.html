@@ -7,6 +7,9 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width"/>
 <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+<link rel="stylesheet" type="text/css" href="../assets/css/profile-style.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/buttons.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/kuang.css">
 </head>
 <body>
   <!-- Javascript -->
@@ -28,6 +31,7 @@
            for(var i=0;i<mid.length;i++){
                  str+="<a href="+link+mid[i].contestId+">"+(mid[i].contestId+"</a>"+"\n");
            }
+           document.getElementById("div381").innerHTML="";
            document.getElementById("main").innerHTML="比赛清单"+str;
            document.getElementById("num").innerHTML="至今你以参加"+mid.length+"场比赛";
          },
@@ -43,12 +47,13 @@
 
   <!-- HTML -->
   <a name="#ajax-getjson-example"></a>
-  <div id="example-section38">
-      <div id="div381"></div>
+  <div id="kuang">
+  <h1><div id="num"><center>:)</center></div></h1>
+  <p><div id="main"> </div></p>
+      <div id="div381">
       <input id="input"  type="text" placeholder="请输入Codeforces ID" />
-      <button id="btn382" type="button">Try to click me</button><br>
-      <div id="num">:)</div>
-      <div id="main"> </div>
+      <button id="btn382" type="button" class="button button-glow button-circle button-action button-jumbo">戳</button><br></div>
+      <script type="text/javascript" src="../js/index.js"></script>
   </div>
 </body>
 </html>
