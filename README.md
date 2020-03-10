@@ -2,6 +2,9 @@
 
 一个整合了关于CodeForces的相关消息的小站
 
+![](https://drew233.github.io/INFO-CF/assets/css/images/macbookpro13_front.png)
+
+
 ## Getting Started
 
 Link:[Information of CodeForces](https://drew233.github.io/codeforces/)
