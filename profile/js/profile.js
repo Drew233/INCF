@@ -1,82 +1,10 @@
-<html>
-<head>
-<meta charset="utf-8"/>
-<title>Contest | INFO-cf</title>
-<link rel="stylesheet" type="text/css" href="../contest/css/contest.css">
-<link rel="stylesheet" type="text/css" href="../assets/css/kuang.css">
-<link rel="stylesheet" type="text/css" href="../assets/css/buttons.css">
-<style>
-    table {
-        width: auto;
-        heigth: auto;
-        padding: 0 ;
-        margin: 100 auto;
-        border-collapse: collapse;
-    }
-    td,th {
-        border: 1px solid #ddd;
-        padding: 6px 6px 6px 12px;
-        color: #4f6b72;
-        text-align: center;
-    }
-    th {
-        background: #d3d3d3;
-    }
-.color .green  {background: #82c8a0;}
-    a[class*="btn"] {text-decoration: none;}
-    input[class*="btn"],
-    button[class*="btn"] {border: 0;}
-    .btn-3d {
-    	position: relative;
-    	display: inline-block;
-    	font-size: auto;
-    	color: white;
-    	margin: 20px 10px 10px;
-    	border-radius: 6px;
-    	text-align: center;
-    	transition: top .01s linear;
-    	text-shadow: 0 1px 0 rgba(0,0,0,0.15);
-    }
-    .btn-3d.green:hover  {background-color: #80C49D;}
-
-    .btn-3d:active {
-    	top: 9px;
-    }
-
-
-    .btn-3d.green {
-    	background-color: #82c8a0;
-    	box-shadow: 0 0 0 1px #82c8a0 inset,
-    				0 0 0 2px rgba(255,255,255,0.15) inset,
-    				0 8px 0 0 rgba(126, 194, 155, .7),
-    				0 8px 0 1px rgba(0,0,0,.4),
-    				0 8px 8px 1px rgba(0,0,0,0.5);
-    }
-    .btn-3d.green:active {
-    	box-shadow: 0 0 0 1px #82c8a0 inset,
-    				0 0 0 2px rgba(255,255,255,0.15) inset,
-    				0 0 0 1px rgba(0,0,0,0.4);
-    }
-
-
-
-
-
-</style>
-
-</head>
-
-
-<body>
-<script src="https://code.jquery.com/jquery-latest.js"></script>
-
-
-
-<script type="text/javascript">
 $(document).ready(function (){
     $("#btn382").click(function(){
       var x=  document.getElementById("input");
           var curl="https://codeforces.com/api/user.rating?handle="+x.value;
+          var info = "https://codeforces.com/api/user.info?handles="+x.value;
+          var aurl="";
+          var detai="";
           jQuery.support.cors = true;
           var mid = "[";
            $.ajax({
@@ -86,26 +14,84 @@ $(document).ready(function (){
              success: function( end ) {
                for(var i=0;i<end.result.length;i++){
                          mid+=JSON.stringify(end.result[i])+',';
-                         //通过数组的push()方法向数组中增加jSON数据
-                         // jsonArray.push(json);
                     }
              },
              error: function( end ) {
                mid="";
              }
            });
+           $.ajax({
+             url: info,
+             dataType: 'json',
+              async : false,
+             success: function( end ) {
+               var time = JSON.parse(JSON.stringify(end.result[0].registrationTimeSeconds));;
+               var unixTimestamp = new Date(time*1000);
+               var commonTime = unixTimestamp.toLocaleString();
+               var time1 = JSON.parse(JSON.stringify(end.result[0].lastOnlineTimeSeconds));;
+               var unixTimestamp1 = new Date(time1*1000);
+               var commonTime1 = unixTimestamp1.toLocaleString();
+               aurl+=JSON.parse(JSON.stringify(end.result[0].titlePhoto));
+               if(end.result[0].lastName){
+                 detai+="<li> Lastname: "+JSON.parse(JSON.stringify(end.result[0].lastName))+"</li>";
+               }else{
+                 detai+="<li> Lastname: "+"unknown"+"</li>";
+               }
+               if(end.result[0].firstName){
+                detai+="<li> Firstname: "+JSON.parse(JSON.stringify(end.result[0].firstName))+"</li>";
+              }else{
+                detai+="<li> Firstname: "+"unknown"+"</li>";
+              }
+               if(end.result[0].rating){
+                detai+="<li> Rating: "+JSON.parse(JSON.stringify(end.result[0].rating))+"</li>"
+              }else{
+                detai+="<li> Rating: "+"unknown"+"</li>";
+              }
+               if(end.result[0].rank){
+                detai+="<li> Rank: "+JSON.parse(JSON.stringify(end.result[0].rank))+"</li>"
+              }else{
+                detai+="<li> Rank: "+"unknown"+"</li>";
+              }
+
+                 detai+="<li> RegistrationTime: "+commonTime+"</li>"+"<li> LastOnlineTime: "+commonTime1+"</li>";
+
+          },
+             error: function( end ) {
+               aurl="error";
+             }
+           });
+           var img;
+           var link="https://codeforces.com/profile/"+x.value;
+           console.log(aurl);
+           if(aurl!="error")  { img = '<a href='+link+'><img src='+ "\"https:" +aurl+"\"" +  ' style="width:120px; height:120px; border-radius:50%; overflow:hidden;" />';
+           console.log(detai);
+            document.getElementById("profile").innerHTML=img;
+            document.getElementById("detai").innerHTML=detai;
+
+          }
+            else {
+              document.getElementById("profile").innerHTML=" ";
+            }
            mid+=']';
            if(mid=="]") document.getElementById("Tit").innerHTML="ID不合法,请重新输入ID";
-           else document.getElementById("Tit").innerHTML=x.value+"的比赛清单";
+           else document.getElementById("Tit").innerHTML=x.value+"的个人信息";
            var jsonArray=eval('(' + mid + ')');
           var headArray = [];
-          appendTable();
           function parseHead(oneRow) {
                         for ( var i in oneRow) {
                                 if(i=="ratingUpdateTimeSeconds" || i=="handle") continue;
                                 headArray[headArray.length] = i;
                          }
                          headArray[headArray.length]="Rating Changes";
+            }
+            if(mid!="[]"){
+
+              appendTable();
+
+            }
+            else {
+              jsonArray=eval('( [{"contestId":"该用户尚未参加过比赛","contestName":"该用户尚未参加过比赛","rank":"null","oldRating":"null","newRating":"null"}])');
+              appendTable();
             }
             function appendTable() {
                           parseHead(jsonArray[0]);
@@ -115,7 +101,6 @@ $(document).ready(function (){
                           for ( var count = 0; count < headArray.length; count++) {
                                     var td = document.createElement("th");
                                     td.innerHTML = headArray[count];
-                                    console.log(count);
                                     thead.appendChild(td);
                            }
                            table.appendChild(thead);
@@ -142,28 +127,5 @@ $(document).ready(function (){
                           div.appendChild(table);
         }
         document.getElementById("div381").innerHTML="";
-        console.log("done");
       });
   });
-</script>
-
-
-
-
-
-
-
-<!-- HTML -->
-<a name="#ajax-getjson-example"></a>
-
-<div id="kuang">
-  <h1><div id="Tit">请输入CodeForcesID</div></h1>
-<div id="main"> </div>
-    <div id="div381">
-    <input id="input"  type="text" placeholder=":)" />
-    <button id="btn382" type="button" class="btn-3d green" >戳我</button></div>
-  <div id="Rank"></div>
-</div>
-
-</body>
-</html>

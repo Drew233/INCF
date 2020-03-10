@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Info | CodeForces</title>
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width"/>
+<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+<link rel="stylesheet" type="text/css" href="../assets/css/profile-style.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/buttons.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/kuang.css">
+</head>
+<body>
+  <!-- Javascript -->
+  <script src="https://code.jquery.com/jquery-latest.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function (){
+      $("#btn382").click(function(){
+      var str="";
+      var x=  document.getElementById("input");
+      var curl="https://codeforces.com/api/user.rating?handle="+x.value;
+      var buttonstyle="";
+      jQuery.support.cors = true;
+      $.ajax({
+         url: curl,
+         dataType: 'json',
+         success: function( end ) {
+           var mid = end.result;
+           var link="https://codeforces.com/contest/";
+           for(var i=0;i<mid.length;i++){
+                 str+="<a href="+link+mid[i].contestId+" class="+buttonstyle+">"+(mid[i].contestId+"</a>"+"\n");
+           }
+           document.getElementById("div381").innerHTML="";
+           document.getElementById("main").innerHTML="比赛清单<br>"+str;
+           document.getElementById("num").innerHTML="至今你已参加"+mid.length+"场比赛";
+         },
+         error: function( end ) {
+           document.getElementById("info").innerHTML="输入用户名错误，请重新输入";
+         }
+       });
+        });
+    });
+  </script>
+
+
+
+  <!-- HTML -->
+  <a name="#ajax-getjson-example"></a>
+  <div id="kuang">
+  <h1><div id="num"><center>:)</center></div></h1>
+  <p><div id="main"> </div></p>
+      <div id="div381">
+      <input id="input"  type="text" placeholder="Codeforces ID" />
+      <button id="btn382" type="button" class="button button-glow button-circle button-action button-jumbo">戳</button><br></div>
+      <center><div id="info"></div></center>
+      <script type="text/javascript" src="../js/index.js"></script>
+    <div id="Rank"></div>
+  </div>
+</body>
+</html>

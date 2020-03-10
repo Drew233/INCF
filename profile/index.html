@@ -1,61 +1,76 @@
-<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8"/>
-<title>Info | CodeForces</title>
-<meta name="keywords" content=""/>
-<meta name="description" content=""/>
-<meta name="viewport" content="width=device-width"/>
-<meta http-equiv="Access-Control-Allow-Origin" content="*" />
-<link rel="stylesheet" type="text/css" href="../assets/css/profile-style.css">
-<link rel="stylesheet" type="text/css" href="../assets/css/buttons.css">
+<title>Contest | INFO-cf</title>
+<link rel="stylesheet" type="text/css" href="../profile/css/profile.css">
 <link rel="stylesheet" type="text/css" href="../assets/css/kuang.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/buttons.css">
+<style>
+    table {
+        width: auto;
+        heigth: auto;
+        padding: 0 ;
+        margin: 100 auto;
+        border-collapse: collapse;
+    }
+    td,th {
+        border: 1px solid #ddd;
+        padding: 6px 6px 6px 12px;
+        color: #4f6b72;
+        text-align: center;
+    }
+    th {
+        background: #d3d3d3;
+    }
+.color .green  {background: #82c8a0;}
+    a[class*="btn"] {text-decoration: none;}
+    input[class*="btn"],
+    button[class*="btn"] {border: 0;}
+    .btn-3d {
+    	position: relative;
+    	display: inline-block;
+    	font-size: auto;
+    	color: white;
+    	margin: 20px 10px 10px;
+    	border-radius: 6px;
+    	text-align: center;
+    	transition: top .01s linear;
+    	text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+    }
+    .btn-3d.green:hover  {background-color: #80C49D;}
+    .btn-3d:active {
+    	top: 9px;
+    }
+    .btn-3d.green {
+    	background-color: #82c8a0;
+    	box-shadow: 0 0 0 1px #82c8a0 inset,
+    				0 0 0 2px rgba(255,255,255,0.15) inset,
+    				0 8px 0 0 rgba(126, 194, 155, .7),
+    				0 8px 0 1px rgba(0,0,0,.4),
+    				0 8px 8px 1px rgba(0,0,0,0.5);
+    }
+    .btn-3d.green:active {
+    	box-shadow: 0 0 0 1px #82c8a0 inset,
+    				0 0 0 2px rgba(255,255,255,0.15) inset,
+    				0 0 0 1px rgba(0,0,0,0.4);
+    }
+</style>
 </head>
 <body>
-  <!-- Javascript -->
-  <script src="https://code.jquery.com/jquery-latest.js"></script>
-  <script type="text/javascript">
-  $(document).ready(function (){
-      $("#btn382").click(function(){
-      var str="";
-      var x=  document.getElementById("input");
-      var curl="https://codeforces.com/api/user.rating?handle="+x.value;
-      var buttonstyle="";
-      jQuery.support.cors = true;
-      $.ajax({
-         url: curl,
-         dataType: 'json',
-         success: function( end ) {
-           var mid = end.result;
-           var link="https://codeforces.com/contest/";
-           for(var i=0;i<mid.length;i++){
-                 str+="<a href="+link+mid[i].contestId+" class="+buttonstyle+">"+(mid[i].contestId+"</a>"+"\n");
-           }
-           document.getElementById("div381").innerHTML="";
-           document.getElementById("main").innerHTML="比赛清单<br>"+str;
-           document.getElementById("num").innerHTML="至今你已参加"+mid.length+"场比赛";
-         },
-         error: function( end ) {
-           document.getElementById("info").innerHTML="输入用户名错误，请重新输入";
-         }
-       });
-        });
-    });
-  </script>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script src="../profile/js/profile.js"></script>
+<a name="#ajax-getjson-example"></a>
 
+<div id="kuang">
+  <h1><div id="Tit">请输入CodeForcesID</div></h1>
+  <div id="profile" style="float:left;width:50%;height:auto"></div>
+  <div id="detai" style="float:left;width:50%;height:auto" align="left"><ul ></ul></div><br><br>
+<div id="main"> </div>
+    <div id="div381">
+    <input id="input"  type="text" placeholder=":)" />
+    <button id="btn382" type="button" class="btn-3d green" >戳我</button></div>
+  <div id="Rank"></div>
+</div>
 
-
-  <!-- HTML -->
-  <a name="#ajax-getjson-example"></a>
-  <div id="kuang">
-  <h1><div id="num"><center>:)</center></div></h1>
-  <p><div id="main"> </div></p>
-      <div id="div381">
-      <input id="input"  type="text" placeholder="Codeforces ID" />
-      <button id="btn382" type="button" class="button button-glow button-circle button-action button-jumbo">戳</button><br></div>
-      <center><div id="info"></div></center>
-      <script type="text/javascript" src="../js/index.js"></script>
-    <div id="Rank"></div>
-  </div>
 </body>
 </html>
