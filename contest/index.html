@@ -114,10 +114,11 @@ $(document).ready(function (){
                           for ( var count = 0; count < headArray.length; count++) {
                                     var td = document.createElement("th");
                                     td.innerHTML = headArray[count];
+                                    console.log(count);
                                     thead.appendChild(td);
                            }
                            table.appendChild(thead);
-                          for ( var tableRowNo = 0; tableRowNo < jsonArray.length; tableRowNo++) {
+                          for ( var tableRowNo = jsonArray.length-1; tableRowNo >=0; tableRowNo--) {
                                     var tr = document.createElement("tr");
 
                                     for ( var headCount = 0; headCount < headArray.length; headCount++) {
