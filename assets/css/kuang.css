@@ -1,9 +1,9 @@
 
 #kuang {
     position: relative;
-    width: 50%;
+    width: auto;
     height: auto;
-    max-height: 1200px;
+    max-height: auto;
     margin-bottom: 15px;
     margin-top: 15px;
     text-align: center;

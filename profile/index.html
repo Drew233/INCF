@@ -32,11 +32,11 @@
                  str+="<a href="+link+mid[i].contestId+" class="+buttonstyle+">"+(mid[i].contestId+"</a>"+"\n");
            }
            document.getElementById("div381").innerHTML="";
-           document.getElementById("main").innerHTML="比赛清单"+str;
+           document.getElementById("main").innerHTML="比赛清单<br>"+str;
            document.getElementById("num").innerHTML="至今你已参加"+mid.length+"场比赛";
          },
          error: function( end ) {
-           alert( "ERROR:  " + "输入用户名错误，请重新输入" );
+           document.getElementById("info").innerHTML="输入用户名错误，请重新输入";
          }
        });
         });
@@ -53,7 +53,9 @@
       <div id="div381">
       <input id="input"  type="text" placeholder="Codeforces ID" />
       <button id="btn382" type="button" class="button button-glow button-circle button-action button-jumbo">戳</button><br></div>
+      <center><div id="info"></div></center>
       <script type="text/javascript" src="../js/index.js"></script>
+    <div id="Rank"></div>
   </div>
 </body>
 </html>
