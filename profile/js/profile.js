@@ -64,9 +64,7 @@ $(document).ready(function (){
            });
            var img;
            var link="https://codeforces.com/profile/"+x.value;
-           console.log(aurl);
            if(aurl!="error")  { img = '<a href='+link+'><img src='+ "\"https:" +aurl+"\"" +  ' style="width:120px; height:120px; border-radius:50%; overflow:hidden;" />';
-           console.log(detai);
             document.getElementById("profile").innerHTML=img;
             document.getElementById("detai").innerHTML=detai;
 
@@ -121,8 +119,12 @@ $(document).ready(function (){
                                                     cell.innerHTML = change;
                                                 }
                                             }
+                                            else if(headCount==1 && jsonArray[tableRowNo][headArray[headCount]]!="该用户尚未参加过比赛" ){
+                                              cell.innerHTML = "<a href=\"https://codeforces.com/contest/"+JSON.stringify(jsonArray[tableRowNo][headArray[0]])+"\"a>"+jsonArray[tableRowNo][headArray[headCount]];
+                                            }
                                             else
                                             {
+                                              console.log(headCount+"??"+jsonArray[tableRowNo][headArray[headCount]]);
                                               cell.innerHTML = jsonArray[tableRowNo][headArray[headCount]];}
                                             tr.appendChild(cell);
                                     }
