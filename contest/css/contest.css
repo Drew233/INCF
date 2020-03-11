@@ -11,7 +11,9 @@ body {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background-image: url('../images/bg.jpg');
-
+  background-image: url("../images/bg.jpg");
   background-size:cover;
+}
+html {
+  height: 100%;
 }
