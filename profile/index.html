@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta charset="utf-8"/>
-<title>Contest | INFO-cf</title>
+<title>Profile | INFO-cf</title>
 <link rel="stylesheet" type="text/css" href="../profile/css/profile.css">
 <link rel="stylesheet" type="text/css" href="../assets/css/kuang.css">
 <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
@@ -9,6 +9,27 @@
 <link rel="stylesheet" type="text/css" href="../assets/css/waiter.css">
 <link rel="stylesheet" type="text/css" href="../assets/css/buttons.css">
 <style>
+::-webkit-scrollbar{
+  width: 7px;
+  height: 7px;
+  background-color: #F5F5F5;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb{
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, .1);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .1);
+  background-color: #c8c8c8;
+}
     table {
         width: auto;
         heigth: auto;
@@ -94,6 +115,10 @@
     <li class="wuyou-shop">
       <a class="fa fa-home"  style="color: black;" href="../"></a>
       <div class="waiter-title">返回主页</div>
+    </li>
+    <li class="wuyou-contact">
+      <a class="fa fa-user-circle-o" style="color: black;" href="../profile"></a>
+      <div class="waiter-title">个人信息</div>
     </li>
     <li class="wuyou-contact">
       <a class="fa fa-calendar" style="color: black;" href="../contest"></a>

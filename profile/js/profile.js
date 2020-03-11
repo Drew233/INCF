@@ -101,8 +101,22 @@ $(document).ready(function (){
                           var table = document.createElement("table");
                           var thead = document.createElement("tr");
                           for ( var count = 0; count < headArray.length; count++) {
-                                    var td = document.createElement("th");
-                                    td.innerHTML = headArray[count];
+                            console.log(count);
+                            var td = document.createElement("th");
+                            if(count==0){
+                              td.innerHTML = "ID";
+                            }else if(count==1){
+                              td.innerHTML = "Contest Name";
+                            }else if(count==2){
+                              td.innerHTML = "Rank";
+                            }else if(count==3){
+                              td.innerHTML = "Old Rating";
+                            }else if(count==4){
+                              td.innerHTML = "New Rating";
+                            }
+                            else{
+                            td.innerHTML = "Rating Changes";}
+                            thead.appendChild(td);
                                     thead.appendChild(td);
                            }
                            table.appendChild(thead);
