@@ -3,6 +3,8 @@ $(document).ready(function (){
       var x=  document.getElementById("input");
           var curl="https://codeforces.com/api/user.rating?handle="+x.value;
           var info = "https://codeforces.com/api/user.info?handles="+x.value;
+          var reset = "<a href=\"\"><button id=\"btn382\" type=\"button\" class=\"btn-3d green\" >重新输入ID</button></a></div>"
+
           var aurl="";
           var detai="";
           jQuery.support.cors = true;
@@ -74,7 +76,9 @@ $(document).ready(function (){
             }
            mid+=']';
            if(mid=="]") document.getElementById("Tit").innerHTML="ID不合法,请重新输入ID";
-           else document.getElementById("Tit").innerHTML=x.value+"的个人信息";
+           else {document.getElementById("Tit").innerHTML=x.value+"的个人信息";
+           document.getElementById("Rank").innerHTML=reset;
+         }
            var jsonArray=eval('(' + mid + ')');
           var headArray = [];
           function parseHead(oneRow) {
