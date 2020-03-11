@@ -45,7 +45,7 @@ $(document).ready(function (){
                if(end.result[0].rating){
                 detai+="<li> Rating: "+JSON.parse(JSON.stringify(end.result[0].rating))+"</li>"
               }else{
-                detai+="<li> Rating: "+"unknown"+"</li>";
+                detai+="<li> Rating: "+"1500"+"</li>";
               }
                if(end.result[0].rank){
                 detai+="<li> Rank: "+JSON.parse(JSON.stringify(end.result[0].rank))+"</li>"

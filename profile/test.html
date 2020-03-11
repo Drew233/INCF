@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>漂浮窗</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            width: 200px;
+            height: 200px;
+            left: 0;
+            top: 0;
+            border: 1px solid #eee;
+            box-shadow: 0 0 5px #ccc;
+            position: absolute;
+        }
+        #box h2 {
+            padding:8px 4px ;
+            font-size: 16px;
+            color: #666666;
+        }
+        #box p{
+            padding:8px 4px ;
+            font-size:12px;
+            color: #a9a9a9;
+            line-height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <h2>小毛驴</h2>
+        <p>我有一头小毛驴，我从来也不骑</p>
+        <p>有一天我心血来潮骑着他去赶集</p>
+        <p>我手里拿着小皮鞭真呀真得意</p>
+        <p>不知怎么哗啦啦啦我摔了一身泥</p>
+    </div>
+    <script>
+        let box = document.getElementById('box');
+
+        let speedX = 10,speedY = 8;
+
+        //水平方向运动最大值
+        let
+            maxL = document.documentElement.clientWidth - box.offsetWidth;
+            maxT = document.documentElement.clientHeight - box.offsetHeight;
+
+        let timer = null;
+
+        box.onmouseenter = function () {
+            clearInterval(timer);
+        };
+        box.onmouseleave = function () {
+            autoMove();
+        };
+        autoMove();
+        function autoMove(){
+            timer = setInterval(() => {
+                let
+                nextX = box.offsetLeft + speedX;
+                nextY = box.offsetTop + speedY;
+
+                 //左侧边界
+                 if(nextX <= 0) {
+                    nextX = 0;
+                    speedX *= -1;
+                }
+
+                 //上侧边界
+                 if(nextY <= 0) {
+                    nextY = 0;
+                    speedY *= -1;
+                }
+
+                //右侧边界
+                if(nextX >= maxL) {
+                    nextX = maxL;
+                    speedX *= -1;
+                }
+
+                 //底侧边界
+                 if(nextY >= maxT) {
+                    nextY = maxT;
+                    speedY *= -1;
+                }
+                box.style.left = nextX + 'px';
+                box.style.top = nextY + 'px';
+
+            },50);
+        }
+
+    </script>
+</body>
+</html>
