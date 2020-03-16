@@ -6,10 +6,11 @@ $.ajax({
   dataType: 'json',
    async : false,
   success: function( end ) {
-    for(var i=0;i<end.result.length;i++){
-              if(end.result[i].phase=="FINISHED") {continue;}
+    for(var i=end.result.length-1;i>=0;i--){
+              if(end.result[i].phase=="FINISHED"||end.result[i].durationSeconds>5*3600) {continue;}
               else{
                    mid+=JSON.stringify(end.result[i])+',';
+                  console.log(end.result[i].durationSeconds);
                    ans=ans+1;
                 }
          }
