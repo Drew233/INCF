@@ -7,7 +7,7 @@
 
 ## Getting Started
 
-Link:[Information of CodeForces](https://drew233.github.io/INFO-CF/index.html)
+Link:[Information of CodeForces](https://codeforces.site)
 
 ## SelfIntroduction
 
