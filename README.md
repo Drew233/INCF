@@ -7,7 +7,8 @@
 
 ## Getting Started
 
-Link:[Information of CodeForces](https://codeforces.site)
+Link:[Information of CodeForces](https://world.codeforces.site)
+国内:[Information of CodeForces](https://codeforces.site)
 
 ## SelfIntroduction
 
