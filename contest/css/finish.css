@@ -1,0 +1,22 @@
+body {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    background-image: url("../images/bg.jpg");
+    background-size:cover;
+		background-attachment: fixed; 
+
+  }
+  html, body {
+    height: auto;
+  }
+  

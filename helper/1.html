@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CFhelper | INFO-cf</title>
+<meta charset="utf-8"/>
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width"/>
+<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+<link rel="shortcut icon" href="../images/favicon.ico">
+
+<link rel="stylesheet" type="text/css" href="css/helper.css">
+		<link rel="stylesheet" type="text/css" href="../assets/css/iconfont.css">
+		<link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="../assets/css/waiter.css">
+		<link rel="stylesheet" type="text/css" href="css/word.css">
+		<link rel="stylesheet" type="text/css" href="css/iziToast.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../assets/css/kuang.css"> -->
+<link rel="stylesheet" type="text/css" href="../assets/css/buttons.css">
+<style>  
+    a{
+        text-decoration:none;
+    }
+    a:visited{
+      color: red;
+    }
+    a:active{
+      color: black;
+    }
+    a:hover{
+        background:white;
+        /* color:#FFF; */
+    }
+.color .green  {background: #82c8a0;}
+    a[class*="btn"] {text-decoration: none;}
+    input[class*="btn"],
+    button[class*="btn"] {border: 0;}
+    .btn-3d {
+    	position: relative;
+    	display: inline-block;
+    	font-size: auto;
+    	color: white;
+    	margin: 20px 10px 10px;
+    	border-radius: 6px;
+    	text-align: center;
+    	transition: top .01s linear;
+    	text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+    }
+    .btn-3d.green:hover  {background-color: #80C49D;}
+    .btn-3d:active {
+    	top: 9px;
+    }
+    .btn-3d.green {
+    	background-color: #82c8a0;
+    	box-shadow: 0 0 0 1px #82c8a0 inset,
+    				0 0 0 2px rgba(255,255,255,0.15) inset,
+    				0 8px 0 0 rgba(126, 194, 155, .7),
+    				0 8px 0 1px rgba(0,0,0,.4),
+    				0 8px 8px 1px rgba(0,0,0,0.5);
+    }
+    .btn-3d.green:active {
+    	box-shadow: 0 0 0 1px #82c8a0 inset,
+    				0 0 0 2px rgba(255,255,255,0.15) inset,
+    				0 0 0 1px rgba(0,0,0,0.4);
+    }
+::-webkit-scrollbar{
+    width: 7px;
+    height: 7px;
+    background-color: #F5F5F5;
+  }
+
+  /*定义滚动条轨道 内阴影+圆角*/
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+  }
+
+  /*定义滑块 内阴影+圆角*/
+  ::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .1);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .1);
+    background-color: #c8c8c8;
+  }
+
+  table {  
+      width: auto;
+      padding: 0 ;  
+      margin: 100 auto;  
+      border-collapse: collapse;  
+  }  
+  td,th {  
+      border: 1px solid #ddd;  
+      padding: 6px 6px 6px 12px;  
+      color: #4f6b72;  
+      text-align: center;  
+  }  
+  th {  
+      background: #d3d3d3;  
+
+  }  
+  
+</style>  
+</head>
+  <!-- Javascript -->
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="node_modules/crypto-js/crypto-js.js"></script>
+  
+<body>
+  <script src="js/OLfriends.js"></script>
+  <script src="js/Refresh.js"></script>
+  <script src="js/translate.js"></script>
+  <script src="js/md5.js"></script>
+  <script src="js/iziToast.min.js"></script>
+  
+
+
+
+  <div id="kuang">
+    <div id="INPUT">
+      <h2>请输入您的:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+ apiKey: <input type="text" id="apiKey"/>&nbsp;&nbsp;
+ secret: <input type="text" id="secret"/><br>
+ 比赛ID: <input type="text" id="id"/>&nbsp;&nbsp;
+ CF昵称: <input type="text" id="pname"/><br><br>
+  <div id="status" style="text-align:left">
+    
+    <li>比赛ID是一串数字,如https://codeforces.com/contest/1323/中的1323</li><li>apikey以及secret是为了获得朋友列表，<a href="https://cndrew.cn/2020/03/25/cfapi/">如何获取apikey以及secret？</a></li><li>输入结束后，点击右边绿色按钮以查看当前过题人数和Friends榜单</li>
+    
+</div>
+<center><button id="btn382" type="button" class="btn-3d green" ><div id="fresh">戳我-查看</div></button></center>
+</div>
+</div>
+  
+
+
+ <!-- <input type="txt" id="ene"/><br>
+ <button id="btn250" type="button" class="btn-3d green" ><div id="fresh">戳我-查看</div></button>
+  
+    <div id="res"></div> -->
+
+
+  <div id="kuang"><center>
+    
+      <h1><div id="cname"></div></h1>
+    <p><div id="div1"></div></p>
+
+      <h1><div id="ccname"></div></h1>
+    <p><div id="div2"></div></p>
+
+  <div id="hint"></div>
+    <div id="freshs"></div>
+    <h1><div id="cccname"></div></h1>
+    <div id="tran"></div>
+    <div id="bb"></div>
+    <h1><div id="ccccname"></div></h1>
+    <div id="result"></div>
+ </center>
+  </div>
+
+  
+
+
+  <div class="wuyou-waiter">
+    <ul class="waiter-ul">
+      <li class="wuyou-shop">
+        <a class="fa fa-home"  style="color: black;" href="../"></a>
+        <div class="waiter-title">返回主页</div>
+      </li>
+      <li class="wuyou-contact">
+        <a class="fa fa-user-circle-o" style="color: black;" href="../profile"></a>
+        <div class="waiter-title">个人信息</div>
+      </li>
+      <li class="wuyou-contact">
+        <a class="fa fa-calendar" style="color: black;" href="../contest"></a>
+        <div class="waiter-title">竞赛信息</div>
+      </li>
+      <li class="wuyou-contact">
+        <a class="fa fa-rocket" style="color: black;" href="../helper"></a>
+        <div class="waiter-title">CFhelper</div>
+      </li>
+      <li class="wuyou-top">
+        <a href="javascript:scroll(0,0)" class="iconfont icon-Upward"  style="color: black;"></a>
+        <div class="waiter-title" >回到顶部</div>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>
