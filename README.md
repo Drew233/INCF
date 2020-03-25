@@ -13,19 +13,18 @@ Link:[Information of CodeForces](https://world.codeforces.site)
 
 ## SelfIntroduction
 
-本站已有功能
-1. 统计比赛场数
-2. 每场比赛链接
-
-预计实现功能
-1. rating相关
-2. 近期比赛相关
-3. 比赛题解
+本站已实现功能
+### CF站上的个人信息
+### CF近期比赛及已举行的比赛
+### CFhrlper
+  1. 进行中比赛题目通过情况
+  2. 进行中比赛朋友榜单
+  3. 翻译（通过调用百度翻译API实现）
 
 
 ## Authors
 
-* **Uncle_drew** -
+* **Uncle_drew** 
 
 ## Acknowledgments
 
