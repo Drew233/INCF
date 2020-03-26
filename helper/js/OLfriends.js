@@ -36,7 +36,7 @@ $(document).ready(function (){
       params[1]="apiKey="+apiKey;
       params[2]="time="+timestamp;
       host="https://codeforces.com/api";
-      var contesturl="https://codeforces.com/api/contest.standings?contestId="+id;
+      var contesturl="https://codeforces.com/api/contest.standings?contestId="+id+"&showUnofficial=true";
       methods="/user.friends?";
       params.sort();
       let chars = '0123456789';
@@ -64,7 +64,6 @@ $(document).ready(function (){
         sta="加载失败，请刷新重试";
       }
     });
-    console.log(mid);
     if(apiKey==""||secret==""||id==""||pname==""){
       document.getElementById("status").innerHTML="缺少输入，以上均为必填项";
       return ;
@@ -74,6 +73,7 @@ $(document).ready(function (){
       return ;
     }
     mid+=pname;
+    
     marr=mid.split(',');
 
     var name="";
@@ -241,6 +241,7 @@ document.getElementById("ccccname").innerHTML="翻译结果";
 document.getElementById("hint").innerHTML="若想刷新榜单以及过题人数，请手动点击下方绿色按钮。若重新刷新页面则需重新输入密钥及密匙";
   });
 });
+
 function fre(){
   var timestamp=Date.parse(new Date())/1000;
   document.getElementById("div1").innerHTML="";
@@ -265,7 +266,7 @@ function fre(){
   params[1]="apiKey="+apiKey;
   params[2]="time="+timestamp;
   host="https://codeforces.com/api";
-  var contesturl="https://codeforces.com/api/contest.standings?contestId="+id;
+  var contesturl="https://codeforces.com/api/contest.standings?contestId="+id+"&showUnofficial=true";
   methods="/user.friends?";
   params.sort();
   let chars = '0123456789';
@@ -341,7 +342,6 @@ error: function( end ) {
 });
 plist+=']';
 var friendlist=frlist.split(',');
-// console.log(friendlist);
 var jsonArray=eval('('+plist+')');
 // console.log(prlist);
 var headArray=[];
