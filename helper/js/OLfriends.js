@@ -64,6 +64,7 @@ $(document).ready(function (){
         sta="加载失败，请刷新重试";
       }
     });
+    console.log(mid);
     if(apiKey==""||secret==""||id==""||pname==""){
       document.getElementById("status").innerHTML="缺少输入，以上均为必填项";
       return ;
@@ -114,6 +115,11 @@ $(document).ready(function (){
       sta="加载失败，请刷新重试";
     }
   });
+  
+  if(mid==""){
+    document.getElementById("status").innerHTML="输入有误，请检查后重新输入";
+    return ;
+  }
   plist+=']';
   var friendlist=frlist.split(',');
   // console.log(friendlist);
